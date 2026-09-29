@@ -1,0 +1,20 @@
+======================================================
+COE67-222 Operating Systems - Lab 07 Report
+Name: Ratthanan Yidnorradin
+Student ID: 67106716
+======================================================
+
+1. The Convoy Effect (Phase 2):
+In the FCFS output of `cpu_scheduler.py`, what is the "Convoy Effect"? How did the presence of Process P1 affect the waiting times of P2 and P3?
+Ans:The "Convoy Effect" happens when short processes wait long periods for a massive process to finish. P1's long execution time drastically delayed the start and finish times of P2 and P3.
+
+2. Choosing the Time Quantum:
+In Round Robin, the Time Quantum is critical. 
+- What happens if the OS sets the Time Quantum extremely large (e.g., Quantum = 100)? Which algorithm does RR start to behave like?
+- What happens if the OS sets the Time Quantum extremely small (e.g., Quantum = 0.0001)? (Hint: Think about Context Switching overhead).
+Ans:-Large Quantum (e.g., 100): Processes finish in one slice, making RR behave exactly like FCFS.
+-Small Quantum (e.g., 0.0001): Causes excessive context switching, wasting CPU time on overhead rather than actual processing.
+
+3. AI Context:
+In Phase 3, we used a Round Robin approach for generating tokens in an LLM. Explain why iteration-level Round Robin scheduling prevents long user queries from starving short queries, and how it improves perceived latency (Time To First Token / TTFT) for interactive AI applications.
+Ans:Token-by-token Round Robin (Continuous Batching) prevents long queries from blocking short ones. Short requests finish quickly, preventing starvation and greatly improving Time To First Token (TTFT) for interactive AI.
