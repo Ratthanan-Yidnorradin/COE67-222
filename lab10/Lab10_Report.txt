@@ -1,0 +1,32 @@
+======================================================
+COE67-222 Operating Systems - Lab 10 Report (Final)
+Name: Ratthanan Yidnorradin
+Student ID: 67106716
+======================================================
+
+1. The Role of the Operating System:
+In this mini-project, our Python script simulated the major responsibilities of an Operating System. 
+Match the specific code behavior in `ultimate_cluster_os.py` to the corresponding OS concept you learned throughout the semester:
+
+- File System & Permissions (Lab 9): 
+Ans:File System & Permissions: Workload D failed because the dataset was "not found or Permission Denied". This simulates the OS checking file metadata and access control limits (ACLs) before permitting a process to read sensitive files.
+
+- Memory Management (Labs 5/6):
+Ans:Memory Management: The while loop forces a workload to wait in the queue until available_RAM is strictly greater than or equal to its requested RAM. By refusing to over-allocate RAM, the OS avoids swapping memory to the hard drive, completely preventing Thrashing.
+
+- Concurrency & Deadlocks (Labs 3/4):
+Ans:Concurrency & Deadlocks: By sorting the requested GPUs (e.g., always locking GPU 0 before GPU 1), the OS enforces a strict global order for resource acquisition. This mathematically eliminates the "Circular Wait" condition, making deadlocks impossible.
+
+2. Hardware Utilization:
+Look at the output of your Live Dashboard. Explain how the OS successfully ran Workload A (LLaMA Training), Workload B (Preprocessing), and Workload C (Inference) AT THE SAME TIME without crashing. Why didn't they block each other?
+Ans:
+-System Total: 64GB RAM, 4 GPUs.   
+-Workload A: Used 40GB RAM and GPUs 0, 1, 2.   
+-Workload B: Used 16GB RAM and CPU only (no GPUs).   
+-Workload C: Used 2GB RAM and GPU 3.
+In total, they consumed 58GB of RAM (leaving 6GB free) and successfully distributed all 4 GPUs without conflicts. 
+
+3. Course Reflection (AI Engineering Context):
+You are now applying for a role as a Machine Learning Operations (MLOps) Engineer. 
+Write a short paragraph explaining how understanding Operating Systems (Process queues, RAM/Virtual Memory limits, Deadlock avoidance, File systems) gives you an advantage over a programmer who only knows how to write basic Python/PyTorch scripts.
+Ans:Understanding OS concepts allows an MLOps Engineer to prevent server crashes (OOM), avoid deadlocks, secure sensitive files, and maximize GPU cluster efficiency. A basic programmer's script might work locally but bottleneck or crash a concurrent production system.
